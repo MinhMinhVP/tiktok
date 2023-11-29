@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {Content} from "./Content";
 
 const orders=[100,200,300];
 
@@ -74,7 +75,7 @@ const total=orders.reduce((total,cur) => total+cur)
       ids:checkedbox
     })
   }
-  //console.log(checkedbox);
+  console.log(checkedbox);
   /////////////////////////////////////////
   
   const [job,setJob]=useState('')
@@ -116,7 +117,7 @@ const total=orders.reduce((total,cur) => total+cur)
         courses.map(course => (
           <div key={course.id}>
               <input type="radio"
-                checked={checkedbox===course.id}
+                checked={checked===course.id}
                 onChange={()=>setChecked(course.id)}
                />
               {course.name}
@@ -150,6 +151,9 @@ const total=orders.reduce((total,cur) => total+cur)
             ))
           }
       </ul>
+      <hr></hr>
+      <br></br>
+      <Content/>
     </div>
     
   );
