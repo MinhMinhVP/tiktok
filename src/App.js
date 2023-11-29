@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {Content} from "./Content";
+import Content from "./Content";
 
 const orders=[100,200,300];
 
