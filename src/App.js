@@ -71,11 +71,9 @@ const total=orders.reduce((total,cur) => total+cur)
     })
   }
   const handleSubmit3=()=>{
-    console.log({
-      ids:checkedbox
-    })
+    console.log({ids:checkedbox})
   }
-  console.log(checkedbox);
+ // console.log(checkedbox);
   /////////////////////////////////////////
   
   const [job,setJob]=useState('')
@@ -94,6 +92,9 @@ const total=orders.reduce((total,cur) => total+cur)
     setJob('')
 
   }
+  ///////////////////
+  const [show,setShow]=useState(false)
+
   return (
     <div className="App" style={{padding:20}}>
       <h1>{counter}</h1>
@@ -153,7 +154,9 @@ const total=orders.reduce((total,cur) => total+cur)
       </ul>
       <hr></hr>
       <br></br>
-      <Content/>
+      
+      <button onClick={()=>setShow(!show)}>Toggle</button>
+      {show && <Content/>}
     </div>
     
   );
