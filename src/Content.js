@@ -10,7 +10,8 @@ import { useEffect,useState   } from "react"
     // ---
     // 1. callback luôn được gọi sau khi componeent mounted (luôn đúng cả  3 trường hơp)
     // 2. Cleanup function luôn được gọi trước khi component unmounted (luôn đúng cả  3 trường hơp)
-    
+    // 3. Cleanup function luôn được gọi trước khi callback được gọi - trừ lần mounted đầu tiên
+
     const tabs=['posts','comments','albums']
 function Content(){
    const [title,setTitle]=useState('')
@@ -18,6 +19,8 @@ function Content(){
    const [type,setType]=useState('posts')
     const[showGoToTop,setShowGoToTop]=useState(false)
     const [width,setWidth]=useState(window.innerWidth)
+    const [countdown,setCountdown]=useState(180)
+    const [avatar,setAvatar]=useState()
     //console.log(type);
     
     useEffect(()=>{
@@ -66,9 +69,36 @@ function Content(){
         }
     },[])
 
+    useEffect(()=>{
+        const timerID=setInterval(() => {
+            setCountdown(prev => prev-1)
+        }, 1000);
+
+        return clearInterval(timerID)
+    },[])
+    useEffect(()=>{
+
+        //cleanup
+        return ()=>{
+            avatar && URL.revokeObjectURL(avatar.preview)
+        }
+    },[avatar])
+    const handlePreviewAvatar=(e)=>{
+        const file=e.target.files[0]
+        file.preview=URL.createObjectURL(file)
+        setAvatar(file)
+    }
     return (
         <div>
             <h1>{width}</h1>
+            <h5>{countdown}</h5>
+            <input 
+                type="file"
+                onChange={handlePreviewAvatar}
+            />
+            {avatar && (
+                <img src={avatar.preview} alt="" width="80%"/>
+            )}
             <input
                 value={title}
                 onChange={e=>setTitle(e.target.value)}
@@ -101,6 +131,7 @@ function Content(){
                     }}
                 >Go to top</button>
             )}
+            
         </div>
     )
 }
