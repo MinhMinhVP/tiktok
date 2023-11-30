@@ -30,6 +30,7 @@ function Content(){
         })
     },[type])
    
+    // hiển thị button go to top khi cuộn chuột quá 200px
     useEffect(()=>{
         const handleScroll=()=>{
             console.log(window.scrollY);
@@ -52,6 +53,7 @@ function Content(){
         }
     },[])
 
+    // show chiều dài của màn hình khi thay đổi kích thước màn  hình
     useEffect(()=>{
         const handleResize=()=>{
             setWidth(window.innerWidth)
