@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import App2 from './App2';
+import AppMemo from './AppMemo';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -20,7 +21,7 @@ emitComment(2)
 emitComment(3)
 root.render(
   //<React.StrictMode>
-    <App />
+    <AppMemo />
   //</React.StrictMode>
 );
 
