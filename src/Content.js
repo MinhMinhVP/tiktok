@@ -13,6 +13,20 @@ import { useEffect,useState   } from "react"
     // 3. Cleanup function luôn được gọi trước khi callback được gọi - trừ lần mounted đầu tiên
 
     const tabs=['posts','comments','albums']
+     const lessons=[
+        {
+            id:1,
+            name:"minh fdufhewurfewuir"
+        },
+        {
+            id:2,
+            name:"minh 123"
+        },
+        {
+            id:3,
+            name:"minh 345345"
+        }
+    ]
 function Content(){
    const [title,setTitle]=useState('')
    const [posts,setPosts]=useState([])
@@ -21,6 +35,7 @@ function Content(){
     const [width,setWidth]=useState(window.innerWidth)
     const [countdown,setCountdown]=useState(180)
     const [avatar,setAvatar]=useState()
+    const[lessonId,setLessonId]=useState(1)
     //console.log(type);
     
     useEffect(()=>{
@@ -88,8 +103,36 @@ function Content(){
         file.preview=URL.createObjectURL(file)
         setAvatar(file)
     }
+    /////////////////////
+    useEffect(()=>{
+        const handleComment=({detail})=>{
+            console.log(detail);
+        }
+        window.addEventListener(`lesson-${lessonId}`,handleComment)
+        
+        return ()=>{
+            window.removeEventListener(`lesson-${lessonId}`,handleComment)
+
+        }
+        
+    },[lessonId])
     return (
         <div>
+            <ul>
+                {
+                    lessons.map(lesson =>(
+                        <li
+                            key={lesson.id}
+                            style={{
+                                color: lessonId===lesson.id?'red':'#333'
+                            }}
+                            onClick={()=>setLessonId(lesson.id)}
+                        >
+                            {lesson.name}
+                        </li>
+                    ))
+                }
+            </ul>
             <h1>{width}</h1>
             <h5>{countdown}</h5>
             <input 
