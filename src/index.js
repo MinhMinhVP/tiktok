@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import App2 from './App2';
 import AppMemo from './AppMemo';
+import AppReducer from './AppReducer';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -21,7 +22,7 @@ emitComment(2)
 emitComment(3)
 root.render(
   //<React.StrictMode>
-    <AppMemo />
+    <AppReducer />
   //</React.StrictMode>
 );
 
