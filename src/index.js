@@ -7,6 +7,8 @@ import AppMemo from './AppMemo';
 import AppReducer from './AppReducer';
 import AppReducerTodoApp from './AppReducerTodoApp';
 import reportWebVitals from './reportWebVitals';
+import AppContext from './AppContext';
+import { ThemeProvider } from './ThemeContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 function emitComment(id){
@@ -23,7 +25,9 @@ emitComment(2)
 emitComment(3)
 root.render(
   //<React.StrictMode>
-    <AppReducerTodoApp />
+  <ThemeProvider>
+    <AppContext />
+    </ThemeProvider>
   //</React.StrictMode>
 );
 
