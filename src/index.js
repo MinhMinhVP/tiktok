@@ -9,6 +9,8 @@ import AppReducerTodoApp from './AppReducerTodoApp';
 import reportWebVitals from './reportWebVitals';
 import AppContext from './AppContext';
 import { ThemeProvider } from './ThemeContext';
+import AppGlobal from './AppGlobal';
+import {StoreProvider} from './store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 function emitComment(id){
@@ -25,10 +27,14 @@ emitComment(2)
 emitComment(3)
 root.render(
   //<React.StrictMode>
-  <ThemeProvider>
-    <AppContext />
-    </ThemeProvider>
+  //<ThemeProvider>
+  //  <AppContext />
+   // </ThemeProvider>
   //</React.StrictMode>
+  <StoreProvider>
+    <AppGlobal/>
+
+  </StoreProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
