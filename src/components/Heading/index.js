@@ -3,7 +3,7 @@ import styles from './Heading.module.css'
 function Heading(){
     return (
         <div>
-            <p className={styles.heading}>Heading </p>
+            <p className={styles.b}>Heading </p>
         </div>
     )
 }

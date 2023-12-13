@@ -13,6 +13,7 @@ import AppGlobal from './AppGlobal';
 import {StoreProvider} from './store';
 import AppImperativeHandle from './AppImperativeHandle';
 import AppCSS from './AppCSS';
+import AppCLSX from './AppCLSX'; 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 function emitComment(id){
@@ -33,7 +34,7 @@ root.render(
   //  <AppContext />
    // </ThemeProvider>
   //</React.StrictMode>
-  <AppCSS/>
+  <AppCLSX/>
 );
 
 // If you want to start measuring performance in your app, pass a function
