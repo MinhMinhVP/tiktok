@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter  as Router} from 'react-router-dom';
 import './index.css';
 import App from './App';
 import App2 from './App2';
@@ -14,6 +15,7 @@ import {StoreProvider} from './store';
 import AppImperativeHandle from './AppImperativeHandle';
 import AppCSS from './AppCSS';
 import AppCLSX from './AppCLSX'; 
+import AppPage from './AppPage'; 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 function emitComment(id){
@@ -34,7 +36,9 @@ root.render(
   //  <AppContext />
    // </ThemeProvider>
   //</React.StrictMode>
-  <AppCLSX/>
+  <Router>
+    <AppPage/>
+  </Router>
 );
 
 // If you want to start measuring performance in your app, pass a function
